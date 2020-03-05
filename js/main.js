@@ -5,11 +5,11 @@ const drawerCover = document.getElementById('drawerCover')
 const drawerIcon = document.getElementById('drawerIcon')
 
 drawerIcon.addEventListener('click', () => {
-  drawer.classList.toggle('drawer--off')
-  drawerCover.classList.toggle('drawer--off')
+  drawer.classList.toggle('drawer--active')
+  drawerCover.classList.toggle('drawer-cover--active')
 })
 
 drawerCover.addEventListener('click', () => {
-  drawer.classList.toggle('drawer--off')
-  drawerCover.classList.toggle('drawer--off')
+  drawer.classList.toggle('drawer--active')
+  drawerCover.classList.toggle('drawer-cover--active')
 })
