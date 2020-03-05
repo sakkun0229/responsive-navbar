@@ -7,9 +7,11 @@ const drawerIcon = document.getElementById('drawerIcon')
 drawerIcon.addEventListener('click', () => {
   drawer.classList.toggle('drawer--active')
   drawerCover.classList.toggle('drawer-cover--active')
+  drawerIcon.classList.toggle('drawer-icon--active')
 })
 
 drawerCover.addEventListener('click', () => {
   drawer.classList.toggle('drawer--active')
   drawerCover.classList.toggle('drawer-cover--active')
+  drawerIcon.classList.toggle('drawer-icon--active')
 })

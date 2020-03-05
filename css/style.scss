@@ -54,6 +54,11 @@ $sp: 480px;
       opacity: 0.6;
       transition: 0.3s;
     }
+    a.active {
+      border-bottom: 3px solid #00BCD4;
+      opacity: 0.6;
+      transition: 0.3s;
+    }
   }
 }
 
@@ -86,9 +91,46 @@ $sp: 480px;
   .navbar__item {
     margin: 10px;
   }
-  .drawer-icon {
+  .drawer-icon{
     z-index: 110;
-    display: inline-block;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    &--active {
+      .icon-parts {
+        background-color: transparent;
+      }
+      .icon-parts:before {
+        top: 0;
+        transform: rotate(135deg);
+      }
+      .icon-parts:after {
+        top: 0;
+        transform: rotate(-135deg);
+      }
+    }
+  }
+  .icon-parts, .icon-parts:before, .icon-parts:after {
+    content: "";
+    display: block;
+    background-color: #fff;
+    height: 2px;
+    width: 26px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: 0.5s ease-in-out;
+  }
+  .icon-parts:before {
+    top: -16px;
+  }
+  .icon-parts:after {
+    top: 16px;
   }
   .drawer-cover {
     position: fixed;
@@ -98,13 +140,12 @@ $sp: 480px;
     width: 100%;
     z-index: 99;
     background-color: #000;
-    opacity: 0.4;
     opacity: 0;
     visibility: hidden;
+    transition: 0.5s;
     &--active {
       opacity: 0.6;
       visibility: visible;
-      transition: 0.5s;
     }
   }
 };

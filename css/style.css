@@ -43,6 +43,13 @@ a {
   transition: 0.3s;
 }
 
+.navbar__item a.active {
+  border-bottom: 3px solid #00BCD4;
+  opacity: 0.6;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
 .drawer-icon {
   display: none;
 }
@@ -80,7 +87,45 @@ a {
   }
   .drawer-icon {
     z-index: 110;
-    display: inline-block;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+  }
+  .drawer-icon--active .icon-parts {
+    background-color: transparent;
+  }
+  .drawer-icon--active .icon-parts:before {
+    top: 0;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  .drawer-icon--active .icon-parts:after {
+    top: 0;
+    -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+  }
+  .icon-parts, .icon-parts:before, .icon-parts:after {
+    content: "";
+    display: block;
+    background-color: #fff;
+    height: 2px;
+    width: 26px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+  .icon-parts:before {
+    top: -16px;
+  }
+  .icon-parts:after {
+    top: 16px;
   }
   .drawer-cover {
     position: fixed;
@@ -90,15 +135,14 @@ a {
     width: 100%;
     z-index: 99;
     background-color: #000;
-    opacity: 0.4;
     opacity: 0;
     visibility: hidden;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .drawer-cover--active {
     opacity: 0.6;
     visibility: visible;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
   }
 }
 
