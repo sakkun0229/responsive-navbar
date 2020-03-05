@@ -1,17 +1,21 @@
 console.log("hello from main.js")
 
-const drawer = document.getElementById('drawer')
-const drawerCover = document.getElementById('drawerCover')
-const drawerIcon = document.getElementById('drawerIcon')
+const navSlide = () => {
+  const nav = document.getElementById('navLinks')
+  const burger = document.getElementById('burger')
+  const overlay = document.getElementById('overlay')
 
-drawerIcon.addEventListener('click', () => {
-  drawer.classList.toggle('drawer--active')
-  drawerCover.classList.toggle('drawer-cover--active')
-  drawerIcon.classList.toggle('drawer-icon--active')
-})
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('nav--active')
+    burger.classList.toggle('burger--active')
+    overlay.classList.toggle('overlay--active')
+  })
 
-drawerCover.addEventListener('click', () => {
-  drawer.classList.toggle('drawer--active')
-  drawerCover.classList.toggle('drawer-cover--active')
-  drawerIcon.classList.toggle('drawer-icon--active')
-})
+  overlay.addEventListener('click', () => {
+    nav.classList.toggle('nav--active')
+    burger.classList.toggle('burger--active')
+    overlay.classList.toggle('overlay--active')
+  })
+}
+
+navSlide()

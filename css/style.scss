@@ -1,7 +1,6 @@
-// reset
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -31,131 +30,110 @@ $sp: 480px;
 }
 
 
-
 // navbar
 .navbar {
+  background-color: #222;
+  color: #fff;
   display: flex;
   justify-content: space-between;
-  background-color: #212121;
-  color: #fff;
-  padding: 30px;
   align-items: center;
-  &__items {
-    list-style: none;
+  padding: 30px;
+  &__links {
     display: flex;
+    list-style: none;
   }
-  &__item {
+  &__link {
     a {
+      padding: 10px;
       color: #fff;
-      padding: 5px 10px;
     }
     a:hover {
-      border-bottom: 3px solid #00BCD4;
-      opacity: 0.6;
-      transition: 0.3s;
-    }
-    a.active {
-      border-bottom: 3px solid #00BCD4;
-      opacity: 0.6;
-      transition: 0.3s;
+      border-bottom: 2px solid #00BCD4;
     }
   }
 }
 
-.drawer-icon {
+.burger {
   display: none;
+  cursor: pointer;
+  div {
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px;
+    transition: 0.5s;
+  }
+}
+
+.overlay {
+  z-index: 90;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease-in-out;
 }
 
 @include sp {
-  .drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 80%;
-    z-index: 100;
-    background-color: #212121;
-    flex-direction: column;
-    padding-top: 20%;
-    text-align: center;
-    transition: 0.4s ease-in-out;
-    transform: translateX(105%);
-    opacity: 0;
-    visibility: hidden;
-    &--active{
-      transform: translateX(0%);
-      opacity: 1;
-      visibility: visible;
+  body {
+    overflow-x: hidden;
+  }
+  .navbar {
+    &__links {
+      // visibility: hidden;を有効にすると画面サイズを変えたときに一瞬出るドロワーが非表示になるが、
+      // translateX(0%) -> translateX(100%)のtransitionが無効になる
+      // visibility: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80vw;
+      height: 100vh;
+      z-index: 100;
+      background-color: #222;
+      flex-direction: column;
+      text-align: center;
+      padding: 20vh 0;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in-out;
+    }
+    &__link {
+      margin: 30px;
     }
   }
-  .navbar__item {
-    margin: 10px;
-  }
-  .drawer-icon{
+  .burger {
+    display: block;
     z-index: 110;
-    display: block;
-    position: relative;
-    cursor: pointer;
-    height: 30px;
-    width: 30px;
-    &--active {
-      .icon-parts {
-        background-color: transparent;
-      }
-      .icon-parts:before {
-        top: 0;
-        transform: rotate(135deg);
-      }
-      .icon-parts:after {
-        top: 0;
-        transform: rotate(-135deg);
-      }
-    }
   }
-  .icon-parts, .icon-parts:before, .icon-parts:after {
-    content: "";
-    display: block;
-    background-color: #fff;
-    height: 2px;
-    width: 26px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    transition: 0.5s ease-in-out;
+}
+
+.nav--active {
+  transform: translateX(0%);
+  visibility: visible;
+}
+.burger--active {
+  .line1 {
+    transform: rotate(-45deg) translate(-3px, 7px);
+    // transform: rotate(-45deg);
   }
-  .icon-parts:before {
-    top: -16px;
-  }
-  .icon-parts:after {
-    top: 16px;
-  }
-  .drawer-cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 99;
-    background-color: #000;
+  .line2 {
     opacity: 0;
-    visibility: hidden;
-    transition: 0.5s;
-    &--active {
-      opacity: 0.6;
-      visibility: visible;
-    }
   }
-};
+  .line3 {
+    transform: rotate(45deg) translate(-3px, -7px);
+    // position: relative;
+  }
+}
+.overlay--active {
+  opacity: 0.6;
+  visibility: visible;
+}
 
 
 
-// contaier
 .container {
-  // width: 90%;
-  // margin: 30px auto;
   padding: 30px;
-  max-width: 900px;
 }
